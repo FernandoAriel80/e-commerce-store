@@ -41,16 +41,29 @@
 }
 
 .cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
   background-color: var(--secondary-color);
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 50%;
   cursor: pointer;
-  font-weight: 500;
-  padding: 10px 20px;
+  width: 40px;
+  height: 40px;
   transition: var(--transition);
 }
 
 .cart-btn:hover {
   background-color: #2980b9;
+}
+
+.ic-cart {
+  width: 20px;
+  height: 20px;
+}
+
+.link-properties {
+  text-decoration: none;
 }

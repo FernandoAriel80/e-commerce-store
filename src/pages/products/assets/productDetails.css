@@ -26,8 +26,8 @@
 }
 
 .main-image img {
-  width: 100%;
-  height: 100%;
+  max-width: 600px;
+  height: 80%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -87,6 +87,7 @@
   color: var(--primary-color);
   margin: 0 0 8px 0;
   line-height: 1.2;
+  min-height: 70%;
 }
 
 .product-category {
@@ -130,8 +131,6 @@
   align-items: center;
   gap: 15px;
   padding: 20px 0;
-  border-top: 1px solid #e1e5e9;
-  border-bottom: 1px solid #e1e5e9;
 }
 
 .current-price {
@@ -261,20 +260,12 @@
 }
 
 .add-to-cart-btn.primary {
-  background: var(--accent-color);
+  background: var(--primary-color);
   color: white;
 }
 
-.add-to-cart-btn.primary:hover:not(:disabled) {
-  background: #c0392b;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
-}
-
-.add-to-cart-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none !important;
+.add-to-cart-btn:hover {
+  background-color: var(--secondary-color);
 }
 
 .action-buttons {
@@ -303,17 +294,16 @@
 
 /* Información Adicional */
 .additional-info {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  padding: 25px;
+  padding: 10px;
   background: #f8f9fa;
   border-radius: 12px;
   margin-top: 20px;
 }
 
 .info-item {
-  display: flex;
   align-items: center;
   gap: 15px;
 }
@@ -366,6 +356,7 @@
   text-align: center;
   transition: var(--transition);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  min-height: 350px;
 }
 
 .related-product-card:hover {
@@ -374,8 +365,8 @@
 }
 
 .related-product-card img {
-  width: 100%;
-  height: 120px;
+  max-width: 100px;
+  height: 80%;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -477,4 +468,5 @@
   .color-options {
     justify-content: center;
   }
+
 }
