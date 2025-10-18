@@ -1,12 +1,18 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../assets/productDetails.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductService from "../../../services/product-service";
+import { CartContext } from "../../../contexts/CartContext";
 export default function ProductDetails() {
   const [product, setProduct] = useState([]);
   const [productCategory, setProductCategory] = useState([]);
+  const { addCart } = useContext(CartContext);
   const { id } = useParams();
 
+  const addToCart = (product) => {
+    addCart(product);
+    alert(`${product.title} agregado al carrito`);
+  };
   const getProduct = async () => {
     const productData = await ProductService.getProductById(id);
     setProduct(productData);
@@ -64,21 +70,15 @@ export default function ProductDetails() {
           <div className="product-actions">
             <button
               className="add-to-cart-btn primary"
-              /*   onClick={handleAddToCart}
-                disabled={!selectedSize || !selectedColor} */
+              onClick={() => addToCart(product)}
             >
               <span className="cart-icon">🛒</span>
               Agregar al Carrito - ${product.price}
               {/* {(product.price * quantity).toFixed(2) }*/}
             </button>
 
-            <div className="action-buttons">
-              <button className="wishlist-btn">♡ Agregar a Favoritos</button>
-              <button className="share-btn">⎘ Compartir</button>
-            </div>
           </div>
 
-          {/* Información Adicional */}
           <div className="additional-info">
             <div className="info-item">
               <span className="info-icon">🚚</span>
@@ -111,16 +111,17 @@ export default function ProductDetails() {
         <h3>Productos Relacionados</h3>
         <div className="related-products-grid">
           {productCategory.map((relatedProduct) => (
-            <div key={relatedProduct.id} className="related-product-card">
-              <a
-                href={`/producto-detalles/${relatedProduct.id}`}
-                className="link-properties"
-              >
+            <Link
+              to={`/producto-detalles/${relatedProduct.id}`}
+              className="link-properties"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <div key={relatedProduct.id} className="related-product-card">
                 <img src={relatedProduct.image} alt={relatedProduct.title} />
                 <h4>{relatedProduct.title}</h4>
                 <p>${relatedProduct.price.toFixed(2)}</p>
-              </a>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

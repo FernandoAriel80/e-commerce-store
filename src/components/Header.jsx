@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import "../assets/header.css";
+import { IoCartSharp } from "react-icons/io5";
+import Cart from "../pages/cart/Cart";
+import { useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
+
 export default function Header() {
+  const { isOpen, openCart, products } = useContext(CartContext);
   return (
     <>
       <header className="header">
@@ -11,10 +17,14 @@ export default function Header() {
           <nav className="nav">
             <ul>
               <li>
-                <Link to="/">Inicio</Link>
+                <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+                  Inicio
+                </Link>
               </li>
               <li>
-                <a href="/productos">Productos</a>
+                <Link to="/productos" onClick={() => window.scrollTo(0, 0)}>
+                  Productos
+                </Link>
               </li>
               {/*  <li>
                 <a href="#categorias">Categorías</a>
@@ -26,11 +36,19 @@ export default function Header() {
           </nav>
           <div>
             <div className="header-actions">
-              <button className="cart-btn">
-                Carrito {/* {cart.length} */}
+              <button className="cart-btn" onClick={openCart}>
+                <IoCartSharp className="ic-cart" />{" "}
+                <div>{products.length > 0 ? products.length : ""}</div>
               </button>
+
+              <div
+                className="cart-view"
+                style={isOpen ? { display: "block" } : { display: "none" }}
+              >
+                <Cart />
+              </div>
             </div>
-           {/*  <div>
+            {/*  <div>
               <button>Inicie sesión</button>
             </div> */}
           </div>
