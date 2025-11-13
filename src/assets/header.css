@@ -23,6 +23,24 @@
 .nav ul {
   display: flex;
   list-style: none;
+  gap: 25px;
+}
+
+.router-link a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+
+
+}
+
+.router-link a:hover {
+  color: var(--secondary-color);
+}
+
+.router-link a.active {
+  color: var(--secondary-color);
 }
 
 .nav ul li {
@@ -64,6 +82,6 @@
   height: 20px;
 }
 
-.link-properties {
+/* .link-properties {
   text-decoration: none;
-}
+} */

@@ -4,6 +4,7 @@ import { IoCartSharp } from "react-icons/io5";
 import Cart from "../pages/cart/Cart";
 import { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
+import RouterLink from "./RouterLink";
 
 export default function Header() {
   const { isOpen, openCart, products } = useContext(CartContext);
@@ -17,21 +18,17 @@ export default function Header() {
           <nav className="nav">
             <ul>
               <li>
-                <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                  Inicio
-                </Link>
+                <RouterLink route="/" name="Inicio" />
               </li>
               <li>
-                <Link to="/productos" onClick={() => window.scrollTo(0, 0)}>
-                  Productos
-                </Link>
+                <RouterLink route="/productos" name="Productos" />
               </li>
-              {/*  <li>
-                <a href="#categorias">Categorías</a>
-              </li>*/}
-              <li>
-                <a href="#footer">Contacto</a>
+               <li>
+                <a href="#footer">Categorías</a>
               </li>
+             {/*  <li>
+                <RouterLink route="/" name="Contacto" />
+              </li> */}
             </ul>
           </nav>
           <div>
