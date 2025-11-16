@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 function RouterLink({ route, name }) {
-  console.log(route, name);
   return (
     <>
       <div className="router-link">
