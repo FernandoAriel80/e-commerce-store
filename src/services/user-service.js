@@ -8,7 +8,7 @@ export default class UserService {
       const response = await fetch(`${this.apiUrl}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({...data, role: 'user'}),
+        body: JSON.stringify({ ...data, role: "user" }),
       });
       const result = await response.json();
       return result;
@@ -19,8 +19,10 @@ export default class UserService {
 
   static async loginUser(data) {
     try {
-      const result = await this.getUserById(data.id)
-      return result;
+      const response = await fetch(`${this.apiUrl}/users`);
+      const results = await response.json();
+      const user = results.find((resut) => resut.email == data.email);
+      return user ?? null;
     } catch (error) {
       console.error(error);
     }

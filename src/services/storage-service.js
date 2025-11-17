@@ -10,7 +10,7 @@ export default class StorageService {
   }
 
   static logout() {
-    //localStorage.removeItem("id");
+    localStorage.removeItem("id");
     localStorage.removeItem("name");
     localStorage.removeItem("email");
     localStorage.removeItem("role");
