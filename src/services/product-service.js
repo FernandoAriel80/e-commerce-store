@@ -1,5 +1,7 @@
+import { API_FAKESTORE } from "../environment/api-services";
+
 export default class ProductService {
-  static apiUrl = import.meta.env.VITE_BASE_URL;
+  static apiUrl = API_FAKESTORE;
 
   static async getAllProducts() {
     try {

@@ -23,6 +23,24 @@
 .nav ul {
   display: flex;
   list-style: none;
+  gap: 25px;
+}
+
+.router-link a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+
+
+}
+
+.router-link a:hover {
+  color: var(--secondary-color);
+}
+
+.router-link a.active {
+  color: var(--secondary-color);
 }
 
 .nav ul li {
@@ -56,7 +74,7 @@
 }
 
 .cart-btn:hover {
-  background-color: #2980b9;
+  background-color: var(--tertiary-color);
 }
 
 .ic-cart {
@@ -64,6 +82,22 @@
   height: 20px;
 }
 
-.link-properties {
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.auth-container :first-child {
   text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+  cursor: pointer;
+  padding: 5px;
+}
+
+.auth-container :first-child:hover {
+  color: var(--secondary-color);
 }

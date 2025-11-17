@@ -1,13 +1,17 @@
 import "./App.css";
+import { AuthProvider } from "./contexts/AuthProvider";
 import { CartProvider } from "./contexts/CartProvider";
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {
+
   return (
     <>
-      <CartProvider>
-        <AppRoutes />
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <AppRoutes />
+        </CartProvider>
+      </AuthProvider>
     </>
   );
 }

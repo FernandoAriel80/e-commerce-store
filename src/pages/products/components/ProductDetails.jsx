@@ -1,8 +1,9 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../assets/productDetails.css";
 import { useContext, useEffect, useState } from "react";
 import ProductService from "../../../services/product-service";
 import { CartContext } from "../../../contexts/CartContext";
+import RelatedProducts from "./RelatedProducts";
 export default function ProductDetails() {
   const [product, setProduct] = useState([]);
   const [productCategory, setProductCategory] = useState([]);
@@ -76,7 +77,6 @@ export default function ProductDetails() {
               Agregar al Carrito - ${product.price}
               {/* {(product.price * quantity).toFixed(2) }*/}
             </button>
-
           </div>
 
           <div className="additional-info">
@@ -107,24 +107,8 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      <div className="related-products">
-        <h3>Productos Relacionados</h3>
-        <div className="related-products-grid">
-          {productCategory.map((relatedProduct) => (
-            <Link
-              to={`/producto-detalles/${relatedProduct.id}`}
-              className="link-properties"
-              onClick={() => window.scrollTo(0, 0)}
-            >
-              <div key={relatedProduct.id} className="related-product-card">
-                <img src={relatedProduct.image} alt={relatedProduct.title} />
-                <h4>{relatedProduct.title}</h4>
-                <p>${relatedProduct.price.toFixed(2)}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+      {/* related-products */}
+      <RelatedProducts productCategory={productCategory} />
     </>
   );
 }
