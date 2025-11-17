@@ -11,11 +11,12 @@ export default function RelatedProducts({ productCategory }) {
               to={`/producto-detalles/${relatedProduct.id}`}
               className="link-properties"
               onClick={() => window.scrollTo(0, 0)}
+              key={relatedProduct.id}
             >
-              <div key={relatedProduct.id} className="related-product-card">
+              <div  className="related-product-card">
                 <img src={relatedProduct.image} alt={relatedProduct.title} />
                 <h4>{relatedProduct.title}</h4>
-                <p>${relatedProduct.price.toFixed(2)}</p>
+                <p>${relatedProduct.price}</p>
               </div>
             </Link>
           ))}

@@ -37,6 +37,9 @@ export default function Header() {
               <li>
                 <RouterLink route="/payment" name="Pagar" />
               </li>
+              <li>
+                <RouterLink route="/dashboard" name="Admin" />
+              </li>
             </ul>
           </nav>
           <div className="header-right">

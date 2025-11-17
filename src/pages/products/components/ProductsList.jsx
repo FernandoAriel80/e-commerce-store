@@ -40,7 +40,7 @@ export default function ProductsList() {
                 </Link>
                 <div className="product-info">
                   <h3 className="product-title">{product.title}</h3>
-                  <p className="product-price">${product.price.toFixed(2)}</p>
+                  <p className="product-price">${product.price}</p>
 
                   <button
                     className="add-to-cart-btn"
