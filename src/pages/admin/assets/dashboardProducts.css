@@ -1,0 +1,31 @@
+.list-product-container {
+    text-align: center;
+}
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 6px rgba(red, green, blue, alpha);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.products-table thead {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.products-table th {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+.products-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.img-container img {
+    cursor: pointer;
+}

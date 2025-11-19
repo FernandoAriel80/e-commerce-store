@@ -7,7 +7,7 @@ import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
 import Payment from "../pages/payment/Payment";
 import AuthMiddleware from "../middleware/AuthMiddleware";
-import Admin from "../pages/admin/Admin";
+import Dashboard from "../pages/admin/Dashboard";
 import AdminMiddleware from "../middleware/AdminMiddleware";
 
 export default function AppRoutes() {
@@ -24,7 +24,9 @@ export default function AppRoutes() {
           path="dashboard"
           element={
             <AdminMiddleware>
-              <Admin />
+              <AuthMiddleware>
+                <Dashboard />
+              </AuthMiddleware>
             </AdminMiddleware>
           }
         />
