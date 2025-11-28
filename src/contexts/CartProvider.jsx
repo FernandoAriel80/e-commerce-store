@@ -46,6 +46,35 @@ export function CartProvider({ children }) {
     setIsOpen(isOpen ? false : true);
   };
 
+   const addQuantity = (id) => {
+    const newCart = products.map(product => {
+      if (product.id === id) {
+        return {
+          ...product,
+          quantity: (product.quantity || 1) + 1
+        };
+      }
+      return product;
+    });
+    setProducts(newCart);
+  };
+
+   const removeQuantity = (id) => {
+    const updateCart = products.map(product => {
+      if (product.id === id) {
+        const currentQuantity = product.quantity || 1;
+        if (currentQuantity === 1) {
+          return null;
+        }
+        return { ...product, quantity: currentQuantity - 1 };
+      }
+      return product;
+    }).filter(product => product !== null);
+
+
+    setProducts(updateCart);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -56,6 +85,8 @@ export function CartProvider({ children }) {
         openCart,
         deleteProduct,
         quantityUpdate,
+        addQuantity,
+        removeQuantity,
       }}
     >
       {children}

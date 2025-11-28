@@ -35,3 +35,7 @@
 .close:hover {
     color: #ccc;
 }
+
+.modal-title {
+    color: var(--text-light);
+}

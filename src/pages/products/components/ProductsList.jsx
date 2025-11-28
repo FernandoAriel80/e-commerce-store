@@ -1,22 +1,43 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "../assets/productsList.css";
 import { CartContext } from "../../../contexts/CartContext";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../../contexts/ProductContext";
 import Pagination from "../../../components/Pagination";
+import AlertMessage from "../../../components/AlertMessage";
+import InputSearch from "../../../components/InputSearch";
 
 export default function ProductsList() {
   const { addCart } = useContext(CartContext);
-  const { products } = useContext(ProductContext);
+  const { products, setFilterTitle, filterTitle } = useContext(ProductContext);
+
+  const [alert, setAlert] = useState({
+    visible: false,
+    type: "",
+    message: "",
+  });
+
+  const showAlert = (type, message) => {
+    setAlert({ visible: true, type, message });
+  };
 
   const addToCart = (product) => {
     addCart(product);
-    alert(`${product.title} agregado al carrito`);
+    showAlert("success", `${product.title} agregado al carrito ✔️`);
   };
 
   return (
     <>
+      <AlertMessage
+        visible={alert.visible}
+        type={alert.type}
+        message={alert.message}
+        onClose={() => setAlert((prev) => ({ ...prev, visible: false }))}
+      />
       <section id="productos" className="products-section">
+        <div className="search-container">
+          <InputSearch search={filterTitle} setSearch={setFilterTitle} />
+        </div>
         <div className="container">
           <h2 className="section-title">Nuestros Productos</h2>
           {products != null ? (

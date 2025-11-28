@@ -29,3 +29,12 @@
 .btn-table.blue:hover {
     background-color: var(--tertiary-color);
 }
+
+.btn-table.green {
+    background-color: #55BD48;
+    color: var(--light-color);
+}
+
+.btn-table.green:hover {
+    background-color: #238506;
+}

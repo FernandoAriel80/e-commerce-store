@@ -29,3 +29,29 @@
 .img-container img {
     cursor: pointer;
 }
+
+.btn-create-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: 5%;
+}
+
+.btn-create-container :first-child {
+    max-width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--light-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-create-container :first-child:hover {
+    background-color: var(--tertiary-color);
+}
+
+.action-btn {
+    display: flex;
+}

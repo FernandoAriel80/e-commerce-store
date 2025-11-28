@@ -23,11 +23,11 @@ export default function AppRoutes() {
         <Route
           path="dashboard"
           element={
-            <AdminMiddleware>
-              <AuthMiddleware>
+            <AuthMiddleware>
+              <AdminMiddleware>
                 <Dashboard />
-              </AuthMiddleware>
-            </AdminMiddleware>
+              </AdminMiddleware>
+            </AuthMiddleware>
           }
         />
         <Route

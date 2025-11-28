@@ -13,6 +13,7 @@
 .btn-page:hover {
     background-color: var(--tertiary-color);
     transition: var(--transition);
+    color: white;
 }
 
 .btn-page.active {

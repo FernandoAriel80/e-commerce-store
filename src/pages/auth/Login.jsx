@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import "./assets/login.css";
-import InputForm from "./components/InputForm";
-import BtnForm from "./components/BtnForm";
+
 import UserService from "../../services/user-service";
 import { AuthContext } from "../../contexts/AuthContext";
+import InputForm from "../../components/InputForm";
+import BtnForm from "../../components/BtnForm";
 
 export default function Login() {
   const [formData, setFormData] = useState({
