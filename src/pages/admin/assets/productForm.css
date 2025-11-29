@@ -1,0 +1,17 @@
+.form-product {
+    text-align: left;
+    margin-top: 50px;
+    gap: 10px;
+    padding: 40px;
+    border: solid 1px black;
+    border-radius: 20px;
+    min-width: 400px;
+    background-color: white;
+
+}
+
+.form-product .form-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}

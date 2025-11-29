@@ -6,7 +6,9 @@ import ProductDetails from "../pages/products/components/ProductDetails";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
 import Payment from "../pages/payment/Payment";
-import ProtectedRoute from "../middleware/ProtectedRoute";
+import AuthMiddleware from "../middleware/AuthMiddleware";
+import Dashboard from "../pages/admin/Dashboard";
+import AdminMiddleware from "../middleware/AdminMiddleware";
 
 export default function AppRoutes() {
   return (
@@ -19,11 +21,21 @@ export default function AppRoutes() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route
+          path="dashboard"
+          element={
+            <AuthMiddleware>
+              <AdminMiddleware>
+                <Dashboard />
+              </AdminMiddleware>
+            </AuthMiddleware>
+          }
+        />
+        <Route
           path="payment"
           element={
-            <ProtectedRoute>
+            <AuthMiddleware>
               <Payment />
-            </ProtectedRoute>
+            </AuthMiddleware>
           }
         />
         <Route

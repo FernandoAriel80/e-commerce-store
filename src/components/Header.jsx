@@ -32,17 +32,24 @@ export default function Header() {
                 <RouterLink route="/productos" name="Productos" />
               </li>
               <li>
-                <a href="#footer">Categorías</a>
+                <a href="#footer">Información</a>
               </li>
               <li>
                 <RouterLink route="/payment" name="Pagar" />
+              </li>
+              <li>
+                {auth?.role == "admin" ? (
+                  <RouterLink route="/dashboard" name="Admin" />
+                ) : (
+                  ""
+                )}
               </li>
             </ul>
           </nav>
           <div className="header-right">
             {auth?.name ? (
-              <div>
-                <div>user: {auth?.name || "Invitado"}</div>
+              <div className="login-panel">
+                <div>{auth?.name || "Invitado"}</div>
                 <div className="auth-container">
                   <div onClick={logOut}>Cerrar Sesión</div>
                 </div>

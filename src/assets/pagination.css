@@ -1,0 +1,18 @@
+.pagination-btn {
+    margin: 10px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    border-radius: 3px;
+    min-width: 90px;
+}
+
+.pagination-btn:hover {
+    background-color: var(--tertiary-color);
+}
+
+.pagination-btn.true {
+    background-color: var(--text-light);
+}

@@ -3,7 +3,8 @@ import { CartContext } from "../../contexts/CartContext";
 import { FaRegTrashAlt } from "react-icons/fa";
 import "./assets/cart.css";
 export default function Cart() {
-  const { products, openCart, deleteProduct } = useContext(CartContext);
+  const { products, openCart, deleteProduct, addQuantity, removeQuantity } =
+    useContext(CartContext);
   const subtotal = products.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -26,7 +27,11 @@ export default function Cart() {
                   <span>Cantidad: {product.quantity}</span>
                   <p className="product-price">${product.price}</p>
                 </div>
-                <div>
+                <div className="btns-cart">
+                 <div className="btns-add-and-rem">
+                   <button onClick={() => removeQuantity(product.id)}>-</button>
+                  <button onClick={() => addQuantity(product.id)}>+</button>
+                 </div>
                   <button
                     className="trash-btn"
                     onClick={() => deleteProduct(product.id)}
@@ -39,7 +44,12 @@ export default function Cart() {
           ) : (
             <p>carrito vacio</p>
           )}
-          <div className="cart-footer"  style={products.length > 0? {display: 'block'}:{display: 'none'}}>
+          <div
+            className="cart-footer"
+            style={
+              products.length > 0 ? { display: "block" } : { display: "none" }
+            }
+          >
             <p className="product-price">
               <strong>Total:</strong> ${total.toFixed(2)}
             </p>

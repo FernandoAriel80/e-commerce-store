@@ -4,12 +4,14 @@ import StorageService from "../services/storage-service";
 
 export function AuthProvider({ children }) {
   const [auth, setAuth] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const user = StorageService.getUser();
-    if (user.id) {
+    if (user?.id) {
       setAuth(user);
     }
+    setLoading(false);
   }, []);
 
   const addUser = (user) => {
@@ -21,6 +23,10 @@ export function AuthProvider({ children }) {
     StorageService.logout();
     setAuth(null);
   };
+  
+  if (loading) {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <AuthContext.Provider

@@ -4,9 +4,6 @@ export default class StorageService {
     localStorage.setItem("name", user.name);
     localStorage.setItem("email", user.email);
     localStorage.setItem("role", user.role);
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
   }
 
   static logout() {
@@ -14,9 +11,6 @@ export default class StorageService {
     localStorage.removeItem("name");
     localStorage.removeItem("email");
     localStorage.removeItem("role");
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
   }
 
   static getUser() {

@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./assets/register.css";
-import InputForm from "./components/InputForm";
-import BtnForm from "./components/BtnForm";
 import UserService from "../../services/user-service";
 import { AuthContext } from "../../contexts/AuthContext";
-import StorageService from "../../services/storage-service";
+import InputForm from "../../components/InputForm";
+import BtnForm from "../../components/BtnForm";
 
 export default function Register() {
   const [formData, setFormData] = useState({

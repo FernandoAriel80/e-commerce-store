@@ -1,31 +1,22 @@
 import { useParams } from "react-router-dom";
 import "../assets/productDetails.css";
-import { useContext, useEffect, useState } from "react";
-import ProductService from "../../../services/product-service";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../../contexts/CartContext";
 import RelatedProducts from "./RelatedProducts";
+import { ProductContext } from "../../../contexts/ProductContext";
 export default function ProductDetails() {
-  const [product, setProduct] = useState([]);
-  const [productCategory, setProductCategory] = useState([]);
   const { addCart } = useContext(CartContext);
+  const { product, productCategory, getProduct, getProductsCategory } =
+    useContext(ProductContext);
   const { id } = useParams();
 
   const addToCart = (product) => {
     addCart(product);
     alert(`${product.title} agregado al carrito`);
   };
-  const getProduct = async () => {
-    const productData = await ProductService.getProductById(id);
-    setProduct(productData);
-  };
-
-  const getProductsCategory = async () => {
-    const productData = await ProductService.getByCategory(product.category);
-    setProductCategory(productData);
-  };
 
   useEffect(() => {
-    getProduct();
+    getProduct(id);
   }, [id]);
 
   useEffect(() => {

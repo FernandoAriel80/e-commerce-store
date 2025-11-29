@@ -1,0 +1,40 @@
+.btn-table {
+    margin: 10px;
+    padding: 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+
+}
+
+.btn-table :first-child {
+    display: flex;
+    align-items: center;
+}
+
+.btn-table.red {
+    background-color: red;
+    color: var(--light-color);
+}
+
+.btn-table.red:hover {
+    background-color: #C82909;
+}
+
+.btn-table.blue {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+.btn-table.blue:hover {
+    background-color: var(--tertiary-color);
+}
+
+.btn-table.green {
+    background-color: #55BD48;
+    color: var(--light-color);
+}
+
+.btn-table.green:hover {
+    background-color: #238506;
+}
