@@ -1,6 +1,5 @@
 .menu-side-list {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
 }
 
 .btn-page {
@@ -19,4 +18,11 @@
 .btn-page.active {
     background-color: var(--secondary-color);
     color: white;
+}
+
+@media (min-width: 992px) {
+    .menu-side-list {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }

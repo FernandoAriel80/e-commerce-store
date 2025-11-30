@@ -2,18 +2,24 @@ import { Link, useNavigate } from "react-router-dom";
 import "../assets/header.css";
 import { IoCartSharp } from "react-icons/io5";
 import Cart from "../pages/cart/Cart";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
 import { AuthContext } from "../contexts/AuthContext";
-import RouterLink from "./RouterLink";
+import { IoMenu } from "react-icons/io5";
+import HeaderNav from "./HeaderNav";
 
 export default function Header() {
   const { isOpen, openCart, products } = useContext(CartContext);
   const { auth, logout } = useContext(AuthContext);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const navigate = useNavigate();
   const logOut = () => {
     logout();
     navigate("/");
+  };
+
+  const openMenu = () => {
+    setMenuIsOpen(menuIsOpen ? false : true);
   };
 
   return (
@@ -23,49 +29,12 @@ export default function Header() {
           <div className="logo">
             <h1>LuxeShop</h1>
           </div>
-          <nav className="nav">
-            <ul>
-              <li>
-                <RouterLink route="/" name="Inicio" />
-              </li>
-              <li>
-                <RouterLink route="/productos" name="Productos" />
-              </li>
-              <li>
-                <a href="#footer">Información</a>
-              </li>
-              <li>
-                <RouterLink route="/payment" name="Pagar" />
-              </li>
-              <li>
-                {auth?.role == "admin" ? (
-                  <RouterLink route="/dashboard" name="Admin" />
-                ) : (
-                  ""
-                )}
-              </li>
-            </ul>
-          </nav>
-          <div className="header-right">
-            {auth?.name ? (
-              <div className="login-panel">
-                <div>{auth?.name || "Invitado"}</div>
-                <div className="auth-container">
-                  <div onClick={logOut}>Cerrar Sesión</div>
-                </div>
-              </div>
-            ) : (
-              <div className="auth-container">
-                <Link to="/login">Inicia Sesión</Link>
-              </div>
-            )}
-
+          <div className="header-movile-syle">
             <div className="header-actions">
               <button className="cart-btn" onClick={openCart}>
                 <IoCartSharp className="ic-cart" />{" "}
                 <div>{products.length > 0 ? products.length : ""}</div>
               </button>
-
               <div
                 className="cart-view"
                 style={isOpen ? { display: "block" } : { display: "none" }}
@@ -73,6 +42,62 @@ export default function Header() {
                 <Cart />
               </div>
             </div>
+            <div className="btn-menu" onClick={openMenu}>
+              <IoMenu />
+            </div>
+          </div>
+          <div className="header-pc-style">
+            <HeaderNav auth={auth} />
+            <div className="header-right">
+              {auth?.name ? (
+                <div className="login-panel">
+                  <div>{auth?.name || "Invitado"}</div>
+                  <div className="auth-container">
+                    <div onClick={logOut}>Cerrar Sesión</div>
+                  </div>
+                </div>
+              ) : (
+                <div className="auth-container">
+                  <Link to="/login">Inicia Sesión</Link>
+                </div>
+              )}
+
+              <div className="header-actions">
+                <button className="cart-btn" onClick={openCart}>
+                  <IoCartSharp className="ic-cart" />{" "}
+                  <div>{products.length > 0 ? products.length : ""}</div>
+                </button>
+                <div
+                  className="cart-view"
+                  style={isOpen ? { display: "block" } : { display: "none" }}
+                >
+                  <Cart />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="menu-nav"
+          style={
+            menuIsOpen == true ? { display: "block" } : { display: "none" }
+          }
+        >
+          <div className="header-right">
+            {auth?.name ? (
+              <div className="login-panel">
+                <div>{auth?.name || "Invitado"}</div>
+                <div className="auth-container">
+                  <HeaderNav auth={auth} />
+                  <div onClick={logOut}>Cerrar Sesión</div>
+                </div>
+              </div>
+            ) : (
+              <div className="auth-container">
+                <HeaderNav auth={auth} />
+                <Link to="/login">Inicia Sesión</Link>
+              </div>
+            )}
           </div>
         </div>
       </header>
