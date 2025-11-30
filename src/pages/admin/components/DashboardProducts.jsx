@@ -102,49 +102,51 @@ export default function DashboardProducts() {
           </button>
           <h4>Lista de productos</h4>
         </div>
-        <table className="products-table">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Titulo</th>
-              <th>Precio</th>
-              <th>Categoria</th>
-              <th>imagen</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products?.map((product) => (
-              <tr key={product.id}>
-                <td>{product.id}</td>
-                <td>{product.title}</td>
-                <td>{product.price}</td>
-                <td>{product.category}</td>
-                <td className="img-container">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    width="30"
-                    height="30"
-                    onClick={() => openImage(product.image, product.title)}
-                  />
-                </td>
-                <td className="action-btn">
-                  <div onClick={() => openOrCloseUpdate(product)}>
-                    <BtnTable color="green" text="actualizar">
-                      <GrUpdate />
-                    </BtnTable>
-                  </div>
-                  <div onClick={() => handleDelete(product.id)}>
-                    <BtnTable color="red" text="eliminar">
-                      <FaRegTrashCan />
-                    </BtnTable>
-                  </div>
-                </td>
+        <div className="table-scroll-container">
+          <table className="products-table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Titulo</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>imagen</th>
+                <th>Acciones</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {products?.map((product) => (
+                <tr key={product.id}>
+                  <td>{product.id}</td>
+                  <td>{product.title}</td>
+                  <td>{product.price}</td>
+                  <td>{product.category}</td>
+                  <td className="img-container">
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      width="30"
+                      height="30"
+                      onClick={() => openImage(product.image, product.title)}
+                    />
+                  </td>
+                  <td className="action-btn">
+                    <div onClick={() => openOrCloseUpdate(product)}>
+                      <BtnTable color="green" text="actualizar">
+                        <GrUpdate />
+                      </BtnTable>
+                    </div>
+                    <div onClick={() => handleDelete(product.id)}>
+                      <BtnTable color="red" text="eliminar">
+                        <FaRegTrashCan />
+                      </BtnTable>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <Modal closeModal={closeImage} isOpen={!!selectedImage}>
           {selectedImage && (
             <img
