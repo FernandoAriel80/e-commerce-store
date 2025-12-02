@@ -16,9 +16,6 @@ export default function HeaderNav({ auth }) {
             <a href="#footer">Información</a>
           </li>
           <li>
-            <RouterLink route="/payment" name="Pagar" />
-          </li>
-          <li>
             {auth?.role == "admin" ? (
               <RouterLink route="/dashboard" name="Admin" />
             ) : (

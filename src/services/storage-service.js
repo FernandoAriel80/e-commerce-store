@@ -17,7 +17,20 @@ export default class StorageService {
     const id = localStorage.getItem("id");
     const name = localStorage.getItem("name");
     const email = localStorage.getItem("email");
-     const role = localStorage.getItem("role");
+    const role = localStorage.getItem("role");
     return { id, name, email, role };
+  }
+
+  static saveCartStorage(cart) {
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+  }
+
+  static getCartStorage() {
+    const cart = localStorage.getItem("shoppingCart");
+    return cart ? JSON.parse(cart) : [];
+  }
+
+  static deleteCartStorage() {
+    localStorage.removeItem("shoppingCart");
   }
 }

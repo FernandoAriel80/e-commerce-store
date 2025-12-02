@@ -65,6 +65,13 @@
     display: flex;
 }
 
+.table-title-product {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
 @media (min-width: 992px) {
     .products-table {
         width: 100%;
@@ -79,9 +86,9 @@
         overflow-x: hidden;
     }
 
-.btn-create-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-left: 5%;
-}
+    .btn-create-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-left: 5%;
+    }
 }

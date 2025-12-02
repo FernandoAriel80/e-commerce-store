@@ -118,7 +118,7 @@ export default function DashboardProducts() {
               {products?.map((product) => (
                 <tr key={product.id}>
                   <td>{product.id}</td>
-                  <td>{product.title}</td>
+                  <td className="table-title-product">{product.title}</td>
                   <td>{product.price}</td>
                   <td>{product.category}</td>
                   <td className="img-container">

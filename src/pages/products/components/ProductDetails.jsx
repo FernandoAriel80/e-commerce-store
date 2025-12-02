@@ -1,18 +1,30 @@
 import { useParams } from "react-router-dom";
 import "../assets/productDetails.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../contexts/CartContext";
 import RelatedProducts from "./RelatedProducts";
 import { ProductContext } from "../../../contexts/ProductContext";
+import AlertMessage from "../../../components/AlertMessage";
 export default function ProductDetails() {
   const { addCart } = useContext(CartContext);
   const { product, productCategory, getProduct, getProductsCategory } =
     useContext(ProductContext);
+
+  const [alert, setAlert] = useState({
+    visible: false,
+    type: "",
+    message: "",
+  });
+
+  const showAlert = (type, message) => {
+    setAlert({ visible: true, type, message });
+  };
+
   const { id } = useParams();
 
   const addToCart = (product) => {
     addCart(product);
-    alert(`${product.title} agregado al carrito`);
+    showAlert("success", `${product.title} agregado al carrito`);
   };
 
   useEffect(() => {
@@ -25,6 +37,12 @@ export default function ProductDetails() {
 
   return (
     <>
+      <AlertMessage
+        visible={alert.visible}
+        type={alert.type}
+        message={alert.message}
+        onClose={() => setAlert((prev) => ({ ...prev, visible: false }))}
+      />
       <div className="product-detail-content">
         <div className="product-gallery">
           <div className="main-image">
@@ -33,7 +51,6 @@ export default function ProductDetails() {
           </div>
         </div>
 
-        {/* Información del Producto */}
         <div className="product-info">
           <div className="product-header">
             <h2 className="product-title">{product.title}</h2>
@@ -49,8 +66,6 @@ export default function ProductDetails() {
           </div>
 
           <div className="product-price-section">
-            {/*  <p className="current-price">${product.price.toFixed(2)}</p>
-              <p className="original-price">$ {(product.price * 1.2).toFixed(2)}</p> */}
             <span className="discount-badge">20% OFF</span>
           </div>
 
@@ -66,7 +81,6 @@ export default function ProductDetails() {
             >
               <span className="cart-icon">🛒</span>
               Agregar al Carrito - ${product.price}
-              {/* {(product.price * quantity).toFixed(2) }*/}
             </button>
           </div>
 
@@ -98,7 +112,6 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      {/* related-products */}
       <RelatedProducts productCategory={productCategory} />
     </>
   );

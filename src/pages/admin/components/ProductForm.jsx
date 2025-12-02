@@ -128,7 +128,7 @@ export default function ProductForm({
     }
   };
 
-  const categoryArray = ["Electrónica", "Hogar", "Juguetes", "Ropa", "Otros"];
+  const categoryArray = ["men's clothing", "jewelery", "electronics", "women's clothing", "Otros"];
 
   return (
     <>
