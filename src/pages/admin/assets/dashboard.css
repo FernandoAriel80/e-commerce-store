@@ -1,0 +1,24 @@
+.dashboard-container {
+    display: block;
+    margin-top: 50px;
+}
+
+
+.dashboard-main-container {
+    width: 100%;
+
+}
+
+@media (min-width: 992px) {
+    .dashboard-container {
+        display: flex;
+        height: 100vh;
+    }
+
+    .side-container {
+        width: 200px;
+        height: 100vh;
+    }
+
+
+}

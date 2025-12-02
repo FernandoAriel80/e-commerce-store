@@ -1,0 +1,157 @@
+/* Header */
+.header {
+  background-color: white;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.logo h1 {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-left: 20px;
+}
+
+.header-pc-style {
+  display: none;
+}
+
+.menu-nav {
+  display: none;
+  text-align: center;
+}
+
+.header-movile-syle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*   display: grid;
+  grid-template-columns: 1fr 1fr; */
+  gap: 30px;
+  padding: 15px 20px;
+  transition: var(--transition);
+}
+
+.btn-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+
+
+.cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  color: var(--secondary-color);
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.ic-cart {
+  width: 20px;
+  height: 20px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-panel {
+  display: block;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-right {
+  display: block;
+}
+
+.auth-container :last-child {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 5px;
+}
+
+@media (min-width: 992px) {
+
+  .header .container {
+    justify-content: space-around;
+  }
+
+
+  .header-pc-style {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 30px;
+  }
+
+  .header-movile-syle {
+    display: none;
+  }
+
+  .cart-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    border: none;
+    color: white;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    transition: var(--transition);
+  }
+
+  .cart-btn:hover {
+    background-color: var(--tertiary-color);
+  }
+
+  .header-right {
+    display: flex;
+    justify-content: center;
+  }
+
+  .auth-container :last-child:hover {
+    color: var(--secondary-color);
+  }
+
+  .auth-container :last-child {
+    cursor: pointer;
+  }
+
+  .cart-btn:hover {
+    background-color: var(--tertiary-color);
+  }
+
+  .login-panel {
+    display: flex;
+  }
+}

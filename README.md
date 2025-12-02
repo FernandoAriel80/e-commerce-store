@@ -11,10 +11,10 @@ El propósito de este proyecto es aplicar los conocimientos aprendidos en el **c
 - **React.js** — para la construcción de la interfaz de usuario.  
 - **Vite** — como entorno de desarrollo rápido.  
 - **HTML / CSS / JavaScript (ES6)**  
-- **Fake Store API** — como fuente de datos para simular productos reales.  
-- **Fetch API / Axios** — para realizar las solicitudes HTTP.  
+- **Mock API** — como fuente de datos para simular productos reales.  
+- **Fetch API** — para realizar las solicitudes HTTP.  
 
 ## 🧩 Descripción de la API utilizada
 
-Para obtener los productos de la tienda se utiliza la API pública **[Fake Store API](https://fakestoreapi.com/)**.  
+Para obtener los productos de la tienda se utiliza la API pública **[Fetch API](https://mockapi.io/)**.  
 

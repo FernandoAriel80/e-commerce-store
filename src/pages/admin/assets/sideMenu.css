@@ -1,0 +1,28 @@
+.menu-side-list {
+    display: flex;
+}
+
+.btn-page {
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-page:hover {
+    background-color: var(--tertiary-color);
+    transition: var(--transition);
+    color: white;
+}
+
+.btn-page.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+@media (min-width: 992px) {
+    .menu-side-list {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

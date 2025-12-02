@@ -1,0 +1,47 @@
+.nav ul {
+  display: block;
+  list-style: none;
+  gap: 25px;
+}
+
+.router-link a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.router-link a.active {
+  color: var(--secondary-color);
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+
+@media (min-width: 992px) {
+
+  .nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+  }
+
+  .router-link a:hover {
+    color: var(--secondary-color);
+  }
+
+  .nav ul li a:hover {
+    color: var(--secondary-color);
+  }
+
+  .nav ul li {
+    text-align: center;
+  }
+
+
+}
