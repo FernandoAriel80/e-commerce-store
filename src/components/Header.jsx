@@ -9,11 +9,12 @@ import { IoMenu } from "react-icons/io5";
 import HeaderNav from "./HeaderNav";
 
 export default function Header() {
-  const { isOpen, openCart, products } = useContext(CartContext);
+  const { isOpen, openCart, cart } = useContext(CartContext);
   const { auth, logout } = useContext(AuthContext);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const navigate = useNavigate();
   const logOut = () => {
+    //cleanCart()
     logout();
     navigate("/");
   };
@@ -33,7 +34,7 @@ export default function Header() {
             <div className="header-actions">
               <button className="cart-btn" onClick={openCart}>
                 <IoCartSharp className="ic-cart" />{" "}
-                <div>{products.length > 0 ? products.length : ""}</div>
+                <div>{cart.length > 0 ? cart.length : ""}</div>
               </button>
               <div
                 className="cart-view"
@@ -65,7 +66,7 @@ export default function Header() {
               <div className="header-actions">
                 <button className="cart-btn" onClick={openCart}>
                   <IoCartSharp className="ic-cart" />{" "}
-                  <div>{products.length > 0 ? products.length : ""}</div>
+                  <div>{cart.length > 0 ? cart.length : ""}</div>
                 </button>
                 <div
                   className="cart-view"

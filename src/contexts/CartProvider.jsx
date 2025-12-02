@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartContext } from "./CartContext.js";
+import StorageService from "../services/storage-service.js";
 
 export function CartProvider({ children }) {
-  const [products, setProducts] = useState([]);
+   const [products, setProducts] = useState(() => {
+    return StorageService.getCartStorage();
+  });
+
 
   const addCart = (product) => {
     const existingPoduct = products.find((item) => item.id === product.id);
@@ -38,6 +42,7 @@ export function CartProvider({ children }) {
   };
 
   const cleanCart = () => {
+    StorageService.deleteCartStorage();
     setProducts([]);
   };
 
@@ -46,12 +51,12 @@ export function CartProvider({ children }) {
     setIsOpen(isOpen ? false : true);
   };
 
-   const addQuantity = (id) => {
-    const newCart = products.map(product => {
+  const addQuantity = (id) => {
+    const newCart = products.map((product) => {
       if (product.id === id) {
         return {
           ...product,
-          quantity: (product.quantity || 1) + 1
+          quantity: (product.quantity || 1) + 1,
         };
       }
       return product;
@@ -59,26 +64,39 @@ export function CartProvider({ children }) {
     setProducts(newCart);
   };
 
-   const removeQuantity = (id) => {
-    const updateCart = products.map(product => {
-      if (product.id === id) {
-        const currentQuantity = product.quantity || 1;
-        if (currentQuantity === 1) {
-          return null;
+  const removeQuantity = (id) => {
+    const updateCart = products
+      .map((product) => {
+        if (product.id === id) {
+          const currentQuantity = product.quantity || 1;
+          if (currentQuantity === 1) {
+            return null;
+          }
+          return { ...product, quantity: currentQuantity - 1 };
         }
-        return { ...product, quantity: currentQuantity - 1 };
-      }
-      return product;
-    }).filter(product => product !== null);
-
+        return product;
+      })
+      .filter((product) => product !== null);
 
     setProducts(updateCart);
   };
 
+  useEffect(() => {
+    StorageService.saveCartStorage(products);
+  }, [products]);
+
+  useEffect(() => {
+    const storedCart = StorageService.getCartStorage();
+    if (storedCart.length > 0 && products.length === 0) {
+      setProducts(storedCart);
+    }
+  }, []);
+
+
   return (
     <CartContext.Provider
       value={{
-        products,
+        cart: products,
         isOpen,
         addCart,
         cleanCart,

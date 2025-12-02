@@ -32,7 +32,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 12px;
+    gap: 5px;
     margin-top: 20px;
 }
 
@@ -107,15 +107,14 @@
     background-color: var(--secondary-color);
 }
 
-/* Responsive */
-/* @media (max-width: 1024px) {
-
-
+.cart-detail {
+    display: flex;
+    gap: 5px;
 }
 
-@media (max-width: 768px) {}
-
-@media (max-width: 480px) {
-
-
-} */
+.cart-detail p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 60px;
+}

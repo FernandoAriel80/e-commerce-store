@@ -31,7 +31,7 @@ export default class ProductService {
       const results = await data.json();
       const productBycategory = results.filter(
         (result) => result.category == category
-      );
+      ).slice(0, 4);
       return productBycategory;
     } catch (error) {
       console.log(error);
